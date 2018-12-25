@@ -4,25 +4,20 @@ using TechJobs.Models;
 
 namespace TechJobs.ViewModels
 {
-    public class JobFieldsViewModel : BaseViewModel
+    public class BaseViewModel
     {
-        public new JobFieldType Column { get; set; }
+        public JobFieldType Column { get; set; } = JobFieldType.All;
+        public List<JobFieldType> Columns { get; set; }
+        public string Title { get; set; } = "";
 
-        public IEnumerable<JobField> Fields { get; set; }
-
-        public new List<JobFieldType> Columns { get; set; }
-
-        public JobFieldsViewModel()
+        public BaseViewModel()
         {
-
             Columns = new List<JobFieldType>();
 
             foreach (JobFieldType enumVal in Enum.GetValues(typeof(JobFieldType)))
             {
                 Columns.Add(enumVal);
             }
-
-
         }
     }
 }
